@@ -4,6 +4,24 @@ import styles from './styles';
 import keys from '../../configuration';
 
 class Search extends React.Component {
+  static subscribe(event) {
+    console.log(event.target.parentNode.getAttribute('id'));
+    const data = {
+      channelId: event.target.parentNode.getAttribute('id'),
+    };
+
+    fetch('http://localhost:3000/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,29 +59,13 @@ class Search extends React.Component {
       });
   }
 
-  subscribe(event) {
-    console.log(this);
-    console.log(event.target.parentNode.getAttribute('id'));
-
-    fetch('http://localhost:3000/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(event.target.parentNode.getAttribute('id'))
-    })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   render() {
     const { resources } = this.state;
 
     const renderedResources = resources.map(channel => (
       <div key={channel.snippet.channelId} id={channel.snippet.channelId}>
         <li>{channel.snippet.title}</li>
-        <button className="subscribe" type="button" onClick={(event) => { this.subscribe(event); }}>Subscribe</button>
+        <button className="subscribe" type="button" onClick={(event) => { Search.subscribe(event); }}>Subscribe</button>
       </div>
     ));
 
