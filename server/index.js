@@ -14,6 +14,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
+app.get('/subscribe', (req, res) => {
+  subscription.find()
+    .then((response) => {
+      console.log(response);
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.post('/subscribe', (req, res) => {
   console.log(req.body);
   console.log(subscription);
