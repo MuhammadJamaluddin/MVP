@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 app.get('/subscribe', (req, res) => {
   subscription.find()
     .then((response) => {
-      console.log(response);
       res.send(response);
     })
     .catch((err) => {
@@ -26,9 +25,6 @@ app.get('/subscribe', (req, res) => {
 });
 
 app.post('/subscribe', (req, res) => {
-  console.log(req.body);
-  console.log(subscription);
-
   subscription.insertMany(req.body)
     .then(() => {
       res.end();

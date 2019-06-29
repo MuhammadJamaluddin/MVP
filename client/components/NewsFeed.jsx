@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 import styles from './styles';
 import keys from '../../configuration';
 
@@ -55,14 +56,25 @@ class NewsFeed extends React.Component {
     const { posts } = this.state;
 
     const renderedPosts = posts.map(video => (
-      <iframe title="test" width="560" height="315" src={`https://www.youtube.com/embed/${video.id.videoId}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+      <div className="wrapper">
+        <div className="player-wrapper">
+          <ReactPlayer
+            className="react-player"
+            url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+            light={video.snippet.thumbnails.high.url}
+            width="100%"
+            height="100%"
+            controls="true"
+          />
+        </div>
+      </div>
     ));
 
     return (
       <div style={styles.container}>
         <button className="explore" type="button" onClick={() => { this.explore(); }}>Explore</button>
         <h3 style={styles.title}>This is where the magic happens</h3>
-        <ul>{renderedPosts}</ul>
+        {renderedPosts}
       </div>
     );
   }
