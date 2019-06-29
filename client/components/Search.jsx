@@ -46,8 +46,6 @@ class Search extends React.Component {
     fetch(url)
       .then(response => response.json())
       .then((response) => {
-        console.log(response);
-        console.log(response.items);
         this.setState(() => (
           {
             resources: response.items,
@@ -63,8 +61,9 @@ class Search extends React.Component {
     const { resources } = this.state;
 
     const renderedResources = resources.map(channel => (
-      <div key={channel.snippet.channelId} id={channel.snippet.channelId}>
-        <li>{channel.snippet.title}</li>
+      <div className="subscriptionWrapper" key={channel.snippet.channelId} id={channel.snippet.channelId}>
+        <img src={channel.snippet.thumbnails.default.url} alt="channel" />
+        <a href={`https://www.youtube.com/channel/${channel.snippet.channelId}/featured?disable_polymer=1`} className="subscription">{channel.snippet.title}</a>
         <button className="subscribe" type="button" onClick={(event) => { Search.subscribe(event); }}>Subscribe</button>
       </div>
     ));

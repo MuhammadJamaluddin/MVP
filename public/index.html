@@ -5,7 +5,15 @@
   <title>MVP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <Style>
+    /* videos styles */
+    .wrapper {
+      width: 40%;
+      margin: 0 auto;
+      margin-bottom: 5%;
+    }
+
     .player-wrapper {
       position: relative;
       padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
@@ -17,10 +25,53 @@
       left: 0;
     }
 
-    .wrapper {
-      width: 40%;
-      margin: 0 auto;
-      margin-bottom: 5%;
+    /* channels styles */
+    .subscriptionWrapper {
+      margin-top: 0.7%;
+      padding: 1%;
+      overflow: auto;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      float: left;
+      margin-right: 0.4em;
+    }
+
+    .subscription {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .subscription:hover {
+      color: #333;
+      text-decoration: underline;
+    }
+
+    .subscribe {
+      display: block;
+      box-sizing: content-box;
+      position: relative;
+      color: #202024;
+      text-decoration: none;
+      background-color: #FF0303;
+      border-radius: 10px;
+      border: solid black;
+      font-family: 'Roboto';
+      font-size: 0.7em;
+      width: 20%;
+      color: white;
+    }
+
+    .subscribe:hover {
+      background-color: white;
+      color: #FF0303;
+
     }
   </Style>
 </head>
